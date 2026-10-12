@@ -1,0 +1,15 @@
+<div class="shell">
+  <app-header />
+  <div class="body">
+    <app-sidebar />
+    <main class="content">
+      @if (errors.message(); as message) {
+        <div class="banner" role="alert">
+          <p>{{ message }}</p>
+          <button type="button" (click)="errors.clear()">Dismiss</button>
+        </div>
+      }
+      <router-outlet />
+    </main>
+  </div>
+</div>

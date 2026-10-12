@@ -1,0 +1,27 @@
+<app-page-header title="Users" [subtitle]="subtitle()">
+  <label class="search">
+    <span class="visually-hidden">Search users</span>
+    <input
+      type="search"
+      placeholder="Search users"
+      [value]="store.query()"
+      (input)="onQuery($event)"
+    />
+  </label>
+</app-page-header>
+
+@if (store.loading()) {
+  <p class="status" role="status">Loading users…</p>
+} @else if (store.error(); as error) {
+  <p class="status error" role="alert">{{ error }}</p>
+} @else if (store.filteredUsers().length === 0) {
+  <p class="status">No users match this search.</p>
+} @else {
+  <ul class="cards">
+    @for (user of store.filteredUsers(); track user.id) {
+      <li>
+        <app-user-card [user]="user" />
+      </li>
+    }
+  </ul>
+}

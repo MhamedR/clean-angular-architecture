@@ -1,0 +1,10 @@
+<article class="card">
+  <div class="identity">
+    <span class="avatar" aria-hidden="true">{{ initials() }}</span>
+    <div>
+      <h2>{{ name() }}</h2>
+      <p>{{ user().email | truncate: 42 }}</p>
+    </div>
+  </div>
+  <span class="role">{{ user().role }}</span>
+</article>

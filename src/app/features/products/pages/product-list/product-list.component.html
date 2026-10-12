@@ -1,0 +1,27 @@
+<app-page-header title="Products" [subtitle]="subtitle()">
+  <label class="search">
+    <span class="visually-hidden">Search products</span>
+    <input
+      type="search"
+      placeholder="Search products"
+      [value]="store.query()"
+      (input)="onQuery($event)"
+    />
+  </label>
+</app-page-header>
+
+@if (store.loading()) {
+  <p class="status" role="status">Loading products…</p>
+} @else if (store.error(); as error) {
+  <p class="status error" role="alert">{{ error }}</p>
+} @else if (store.filteredProducts().length === 0) {
+  <p class="status">No products match this search.</p>
+} @else {
+  <ul class="cards">
+    @for (product of store.filteredProducts(); track product.id) {
+      <li>
+        <app-product-card [product]="product" />
+      </li>
+    }
+  </ul>
+}

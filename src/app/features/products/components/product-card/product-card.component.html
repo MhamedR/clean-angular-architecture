@@ -1,0 +1,8 @@
+<article class="card">
+  <div class="heading">
+    <h2>{{ product().name }}</h2>
+    <strong>{{ product().price | currency: 'EUR' }}</strong>
+  </div>
+  <p class="sku">{{ product().sku }}</p>
+  <p>{{ product().description | truncate: 90 }}</p>
+</article>

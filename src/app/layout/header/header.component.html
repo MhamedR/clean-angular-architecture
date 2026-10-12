@@ -1,0 +1,20 @@
+<header class="header">
+  <div class="brand">
+    <span class="mark" aria-hidden="true">CA</span>
+    <div>
+      <p class="eyebrow">Angular 22</p>
+      <strong>Clean Architecture</strong>
+    </div>
+  </div>
+
+  <div class="session">
+    @if (!auth.enabled) {
+      <span class="mode">Local mode</span>
+    } @else if (auth.authenticated()) {
+      <span>{{ auth.session()?.name }}</span>
+      <button type="button" (click)="signOut()">Sign out</button>
+    } @else {
+      <button type="button" (click)="signIn()">Sign in</button>
+    }
+  </div>
+</header>
